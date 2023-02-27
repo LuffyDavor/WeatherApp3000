@@ -37,6 +37,19 @@ app.get("/login",(req,res)=>{
 app.get("/signup",(req,res)=>{
     res.render("signup")
 })
+app.get('/search-history', async (req, res) => {
+  if (req.session.isLoggedIn) {
+    try {
+      const searchHistory = await SearchHistoryCollection.find({ userId: req.session.userId })
+      console.log(searchHistory);
+      res.status(200).json(searchHistory);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('An error occurred while retrieving search history');
+    }
+  }
+});
+
 
 app.post('/login', async (req, res) => {
   try {
@@ -99,18 +112,23 @@ app.post('/', async (req, res) => {
       const searchLocation = req.body.search;
       const userId = req.session.userId;
       const username = req.session.username;
-      const searchHistoryData = { userId: userId, username: username, location: searchLocation };
-      console.log('Creating search history:', searchHistoryData);
-      await SearchHistoryCollection.create(searchHistoryData);
-      console.log('Search history created successfully');
-    }else{
-      return
+      const existingSearchHistory = await SearchHistoryCollection.findOne({ username, location: searchLocation });
+      
+      if (existingSearchHistory) {
+        console.log(`Search history for location ${searchLocation} already exists for user ${username}`);
+      } else {
+        const searchHistoryData = { userId: userId, username: username, location: searchLocation };
+        console.log('Creating search history:', searchHistoryData);
+        await SearchHistoryCollection.create(searchHistoryData);
+        console.log('Search history created successfully');
+      }
+    } else {
+      return;
     }
   } catch (error) {
     console.error(error);
     res.status(500).send("An error occurred while processing your request.");
   }
-  // res.render("home", { isLoggedIn: req.session.isLoggedIn, naming: req.session.username });
 });
 
 

@@ -35,9 +35,11 @@ const searchHistorySchema = new mongoose.Schema({
   },
   location: {
     type: String,
-    required: true
+    required: true,
+    index: { unique: true, sparse: true, partialFilterExpression: { userId: { $type: "objectId" } } }
   }
-}); 
+});
+
 
 const LogInCollection=new mongoose.model('users',logInSchema)
 const SearchHistoryCollection = mongoose.model("searchhistory", searchHistorySchema);

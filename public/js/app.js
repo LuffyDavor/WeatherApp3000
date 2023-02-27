@@ -20,6 +20,64 @@ const apiKeyOpenWeather = '3b29dd8348d1ffdf12ff6a41a5f5cf13';
 const apiKeyWeatherApi = 'b7d19015ca4d4bc7a2c73024232002';
 let apiUrl; let forecastUrl; let weatherApiUrl;
 
+async function saveSearchHistory(searchHistoryData) {
+  fetch('/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(searchHistoryData)
+  })
+  .then(response => {
+    if (response.ok) {
+      console.log('Search history created successfully');
+    } else {
+      console.error('Failed to create search history');
+    }
+  })
+  .catch(error => {
+    console.error('Failed to create search history:', error);
+  });
+}
+
+
+async function loadSearchHistory() {
+  const dropdownMenu = document.querySelector('.dropdown-menu');
+  dropdownMenu.innerHTML = '';
+
+  fetch('/search-history')
+    .then(response => response.json())
+    .then(history => {
+      if (history.length === 0) {
+        const noHistoryLink = document.createElement('a');
+        noHistoryLink.classList.add('dropdown-item');
+        noHistoryLink.textContent = 'No History Available';
+        dropdownMenu.appendChild(noHistoryLink);
+      } else {
+        history.forEach(item => {
+          const link = document.createElement('a');
+          link.classList.add('dropdown-item');
+          link.setAttribute('href', '#');
+          link.textContent = item.location;
+
+          link.addEventListener('click', (event) => {
+            event.preventDefault();
+            searchInput.value = item.location;
+            searchButton.click();
+          });
+
+          dropdownMenu.appendChild(link);
+        });
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
+
+
+
+
 class Weather {
   constructor() {
     // Empty constructor
@@ -84,7 +142,12 @@ if (navigator.geolocation) {
   forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Vienna&appid=${apiKeyOpenWeather}&units=metric`;
   weatherApiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKeyWeatherApi}&q=Vienna`;
   updateWeather(apiUrl, forecastUrl, weatherApiUrl);
+  
 }
+// UPDATE ON PAGE RELOAD
+window.addEventListener('DOMContentLoaded', () => {
+  loadSearchHistory();
+});
 
 // Add click event listener to search button
 searchButton.addEventListener('click', () => {
@@ -128,10 +191,18 @@ function updateWeather(apiUrl, forecastUrl, weatherApiUrl) {
     showWeatherData(forecastData);
     displayWeather(weather1, weather2);
     selectBackground();
-  })
 
+    const city = searchInput.value;
+    const searchHistoryData = { search: city };
+    console.log('Creating search history:', searchHistoryData);
+
+    // COMMUNICATE WITH SERVER TO SAVE SEARCHED LOCATION
+    saveSearchHistory(searchHistoryData);
+    // SERVER COMMUNICATION END
+  })
   .catch(displayError);
 }
+
 
 
 function displayWeather(weather1, weather2) {
@@ -178,8 +249,7 @@ function selectBackground(){
 }
 
 
-
-//FORECAST UPDATE
+//FORECAST
 function showWeatherData(data) {
   let forecastHTML = '';
 

@@ -5,6 +5,10 @@ body{
     background-image: url(/public/img/default.png);
     background-size: cover;
 }
+#header .dropdown{
+    align-self: flex-start;
+}
+
 .hero h2{
     text-transform: uppercase;
 }
