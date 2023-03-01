@@ -40,11 +40,52 @@ const searchHistorySchema = new mongoose.Schema({
   }
 });
 
+const questionsSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "users"
+  },
+  username: {
+    type: String,
+    required: true
+  },
+  question: {
+    type: String,
+    required: true,
+  }
+});
+
+const commentsSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "users"
+  },
+  username: {
+    type: String,
+    required: true
+  },
+  questionId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "questions"
+  },
+  comment: {
+    type: String,
+    required: true
+  }
+});
+
 
 const LogInCollection=new mongoose.model('users',logInSchema)
 const SearchHistoryCollection = mongoose.model("searchhistory", searchHistorySchema);
+const QuestionsCollection = mongoose.model("questions", questionsSchema);
+const CommentsCollection = mongoose.model("comments", commentsSchema);
 
 module.exports = {
     LogInCollection,
-    SearchHistoryCollection
+    SearchHistoryCollection,
+    QuestionsCollection,
+    CommentsCollection
 }
