@@ -1,203 +1,231 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;700&display=swap");
 
-body{
-    font-family: 'Open Sans', sans-serif;
-    background-image: url(/public/img/default.png);
-    background-size: cover;
-}
-#header .dropdown{
-    align-self: flex-start;
+body {
+  font-family: "Open Sans", sans-serif;
+  background-image: url(/public/img/default.png);
+  background-size: cover;
 }
 
-.hero h2{
-    text-transform: uppercase;
+/* NAVBAR */
+
+.nav a {
+  color: #ff0042;
+  text-transform: uppercase;
 }
-.hero{
-    min-height: 60vh;
-    flex-direction: column;
+.nav .nav-link:hover {
+  color: rgba(255, 255, 255, 0.9);
+  transition: ease-in 0.1s;
+}
+
+/* NAVBAR END */
+
+#header .dropdown {
+  align-self: flex-start;
+}
+
+.hero h2 {
+  text-transform: uppercase;
+}
+.hero {
+  min-height: 60vh;
+  flex-direction: column;
 }
 #hero .card {
-    background: #000000d0;
-    color: white;
-    padding: 2em;
-    border-radius: 30px;
-    margin: 1em;
+  background: #000000d0;
+  color: white;
+  padding: 2em;
+  border-radius: 30px;
+  margin: 1em;
 }
-#hero::after{
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-color: black;
-    opacity: .2;
-    z-index: -1;
+#hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.2;
+  z-index: -1;
 }
-#hero .description{
-    text-transform: uppercase;
+#hero .description {
+  text-transform: uppercase;
 }
-.temp{
-    display: inline-block;
+.temp {
+  display: inline-block;
 }
-#hero img{
-    display: inline-block;
+#hero img {
+  display: inline-block;
 }
-#hero .degrees{
-    display: inline-block;
-    font-size: 20px;
+#hero .degrees {
+  display: inline-block;
+  font-size: 20px;
 }
 .search {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 input.search-bar {
-    border: none;
-    outline: none;
-    padding: 0.4em 1em;
-    border-radius: 24px;
-    background: #7c7c7c2b;
-    color: white;
-    font-family: inherit;
-    font-size: 105%;
-    width: calc(100% - 50px);
-  }
+  border: none;
+  outline: none;
+  padding: 0.4em 1em;
+  border-radius: 24px;
+  background: #7c7c7c2b;
+  color: white;
+  font-family: inherit;
+  font-size: 105%;
+  width: calc(100% - 50px);
+}
 button {
-    margin: 0.5em;
-    border-radius: 50%;
-    border: none;
-    height: 44px;
-    width: 44px;
-    outline: none;
-    background: #7c7c7c2b;
-    color: white;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-  }
-  button:hover {
-    background: #7c7c7c6b;
-  }
-
-  
-  .future-forecast{
-    background: rgba(24,24,27,0.8);
-    padding: 25px;
-    position: fixed;
-    bottom: 0;
-    display: flex;
-    color:white;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    overflow-y: hidden;
-    padding-bottom: 0;
+  margin: 0.5em;
+  border-radius: 50%;
+  border: none;
+  height: 44px;
+  width: 44px;
+  outline: none;
+  background: #7c7c7c2b;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
 }
-.weather-forecast{
-    padding-bottom: 10px;
+button:hover {
+  background: #7c7c7c6b;
 }
 
-
-.future-forecast .weather-forecast{
-    display: flex;
+.future-forecast {
+  background: rgba(24, 24, 27, 0.8);
+  padding: 25px;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  color: white;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow-y: hidden;
+  padding-bottom: 0;
+}
+.weather-forecast {
+  padding-bottom: 10px;
 }
 
-.weather-forecast .weather-forecast-item{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0 10px;
-    /* border: 1px solid #eee; */
-    padding: 15px;
-    border-radius: 10px;
-    background: rgba(0,0,0,0.2);
+.future-forecast .weather-forecast {
+  display: flex;
+}
+.weatherDescription {
+  font-size: 18px;
+}
+.forecast-description {
+  font-size: 15px;
+  align-self: center;
+}
+.forecast-details {
+  align-items: center;
+}
+.forecast-temp {
+  align-self: center;
 }
 
-.weather-forecast .weather-forecast-item .day{
-    padding: 5px 15px;
-    background: #3C3C44;
-    border-radius: 50px;
-    text-align: center;
+.weather-forecast .weather-forecast-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  /* border: 1px solid #eee; */
+  padding: 15px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
 }
 
-.weather-forecast .weather-forecast-item .temp{
-    font-weight: 100;
-    font-size: 12px;
+.weather-forecast .weather-forecast-item .day {
+  padding: 5px 15px;
+  background: #3c3c44;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.weather-forecast .weather-forecast-item .temp {
+  font-weight: 100;
+  font-size: 12px;
 }
 #weather-forecast .card {
-    background-color: transparent;
-    width: 270px;
-    height: 210px;
-    padding: 0;
-    box-sizing: border-box;
-    overflow: hidden;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    margin: 10px;
+  background-color: transparent;
+  width: 270px;
+  height: 210px;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin: 10px;
 }
-  
-#weather-forecast .card *{
-    transition: 0.3s ease all;
+
+#weather-forecast .card * {
+  transition: 0.3s ease all;
 }
 #weather-forecast .card img {
-    margin: 0;
-    width: 80px;
-    height: 80px;
-    margin-left: 50px;
-    object-fit: cover;
-    display: block;
-    /* margin-bottom: 19px; */
+  margin: 0;
+  width: 80px;
+  height: 80px;
+  margin-left: 50px;
+  object-fit: cover;
+  display: block;
+  /* margin-bottom: 19px; */
 }
 #weather-forecast .card .weather-forecast-item .focus-content {
-    display: block;
-    padding: 8px 12px;
-}
-  
-#weather-forecast .card:hover img, #weather-forecast .card:focus-within img,  #weather-forecast .card:hover .forecast-day, #weather-forecast .card:focus-within .forecast-day{
-    margin-top: -69px;
-}
-  
-#weather-forecast .card:hover h3, #weather-forecast .card:focus-within h3 {
-    padding: 8px 12px 0;
-}
-p.forecast-day{
-    padding: 5px 15px;
-    background: #3C3C44;
-    border-radius: 50px;
-}
-#weather-forecast .weatherDescription{
-    justify-content: center;
-    text-transform: capitalize;
-    text-align: center;
+  display: block;
+  padding: 8px 12px;
 }
 
-@media only screen and (max-width:730px){
-    
-    .container{
-        padding: 20px;
-    }
-    
-    .future-forecast{
-        justify-content: start;
-        align-items: none;
-        overflow-x: scroll;
-        max-height: 260px;
-    }
-
-    .future-forecast .today .temp{
-        font-size: 16px;
-    }
-    #weather-forecast .card {
-        transform: scale(0.9);
-        margin-inline: 0px;
-    }
+#weather-forecast .card:hover img,
+#weather-forecast .card:focus-within img,
+#weather-forecast .card:hover .forecast-day,
+#weather-forecast .card:focus-within .forecast-day {
+  margin-top: -69px;
 }
 
-@media only screen and (max-width: 1400px){
-    .future-forecast{
-        justify-content: start;
-        align-items: none;
-        overflow-x: scroll;
-    }
+#weather-forecast .card:hover h3,
+#weather-forecast .card:focus-within h3 {
+  padding: 8px 12px 0;
+}
+p.forecast-day {
+  padding: 5px 15px;
+  background: #3c3c44;
+  border-radius: 50px;
+}
+#weather-forecast .weatherDescription {
+  justify-content: center;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+@media only screen and (max-width: 730px) {
+  .container {
+    padding: 20px;
+  }
+
+  .future-forecast {
+    justify-content: start;
+    align-items: none;
+    overflow-x: scroll;
+    max-height: 260px;
+  }
+
+  .future-forecast .today .temp {
+    font-size: 16px;
+  }
+  #weather-forecast .card {
+    transform: scale(0.9);
+    margin-inline: 0px;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .future-forecast {
+    justify-content: start;
+    align-items: none;
+    overflow-x: scroll;
+  }
 }

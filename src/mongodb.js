@@ -77,7 +77,6 @@ const commentsSchema = new mongoose.Schema({
   }
 });
 
-
 const LogInCollection=new mongoose.model('users',logInSchema)
 const SearchHistoryCollection = mongoose.model("searchhistory", searchHistorySchema);
 const QuestionsCollection = mongoose.model("questions", questionsSchema);

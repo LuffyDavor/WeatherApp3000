@@ -1,32 +1,31 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
-        <link rel="stylesheet" href="css/signup.css">
-</head>
-<body>
-<div class="form-group">
+    <link rel="stylesheet" href="css/signup.css" />
+  </head>
+  <body>
+    <div class="form-group">
 
-<h1>Sign Up</h1>
-    {{#if errorMessage}}
-    <div class="alert alert-danger">{{errorMessage}}</div>
-    {{/if}}
+      <h1>Sign Up</h1>
+      {{#if errorMessage}}
+        <div class="alert alert-danger">{{errorMessage}}</div>
+      {{/if}}
 
+      <form action="/signup" method="post">
+        <input placeholder="Benutzername" name="username" type="text" />
+        <br />
+        <input placeholder="Email" name="email" type="email" />
+        <br />
+        <input placeholder="Passwort" name="password" type="password" />
+        <br />
+        <input class="sub" type="submit" />
+      </form>
+      
+      <a href="/login">Zurück zur Anmeldeseite</a>
+    </div>
 
-    <form action="/signup" method="post" >
-        <input placeholder="Username" name="username" type="text">
-        <br>
-        <input placeholder="Email" name="email" type="email">
-        <br>
-        <input placeholder="Password" name="password" type="password">
-        <br>
-        <input class="sub" type="submit">
-    </form>
-
-       <a href="/login">Go back to login page</a>
-</div>
-</body>
+  </body>
 </html>
