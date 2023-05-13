@@ -11,10 +11,22 @@ body {
 .nav a {
   color: #ff0042;
   text-transform: uppercase;
+  margin-right: 5px;
 }
 .nav .nav-link:hover {
   color: rgba(255, 255, 255, 0.9);
-  transition: ease-in 0.1s;
+  transform: scale(1.1);
+  transition: ease-in-out 0.1s;
+}
+
+.dropdown-menu{
+    background-color: rgba(0, 0, 0, 0.723);
+}
+
+.dropdown-toggle{
+    color: #ff0042;
+    text-transform: uppercase;
+    margin-right: 5px;
 }
 
 /* NAVBAR END */
@@ -25,7 +37,11 @@ body {
 
 .hero h2 {
   text-transform: uppercase;
+  margin-left: 20px;
+  color: white;
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
 }
+
 .hero {
   min-height: 60vh;
   flex-direction: column;
@@ -36,6 +52,7 @@ body {
   padding: 2em;
   border-radius: 30px;
   margin: 1em;
+  transform: scale(.97);
 }
 #hero::after {
   content: "";

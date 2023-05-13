@@ -8,7 +8,7 @@ const { QuestionsCollection } = require("./mongodb");
 const { CommentsCollection } = require("./mongodb");
 const session = require("express-session");
 
-const port = process.env.PORT || 420;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.set("view engine", "hbs");
@@ -43,7 +43,8 @@ app.get("/signup", (req, res) => {
 
 app.get("/logout", (req, res) => {
   req.session.isLoggedIn = false;
-  req.session.userId = undefined; // Remove userId from session
+  req.session.userId = undefined;
+  req.session.username = undefined;
   res.redirect("/");
 });
 

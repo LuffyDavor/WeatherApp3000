@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  background-image: url(/img/sky.png);
+  background-image: url(/img/galaxy.png);
   background-size: cover;
   color: white;
   position: relative;
@@ -85,7 +85,7 @@ header {
   text-transform: uppercase;
 }
 .navbar .nav-link:hover {
-  color: rgba(88, 35, 211, 0.9);
+  color: rgba(255, 255, 255, 0.9);
   transform: scale(1.1);
   transition: ease-in 0.1s;
 }
@@ -242,6 +242,9 @@ footer {
 .post .user span {
   color: #ff0042;
 }
+.user span {
+    color: #5124bb;
+  }
 .post .description {
   margin-top: 0;
 }
@@ -257,7 +260,7 @@ footer {
 
 .comment {
   margin-top: 20px;
-  border: 3px solid white;
+  border: 2px solid white;
   border-radius: 10px;
 }
 
